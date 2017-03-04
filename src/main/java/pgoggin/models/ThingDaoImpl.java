@@ -6,20 +6,16 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
 import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * Created by patrickgoggin on 3/4/17.
+ * Created by patrickgoggin on 3/2/17.
  */
 
 @Transactional
 @Component
-public class ThingDaoImpl implements ThingDao{
+public class ThingDaoImpl implements ThingDao {
 
     @PersistenceContext
     private EntityManager entityManager;

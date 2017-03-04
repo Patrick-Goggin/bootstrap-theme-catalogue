@@ -3,7 +3,7 @@ angular.module('app.services',[])
         return {
             getList : function(){
                 var li;
-                $http.get('/things')
+                $http.get('/themes')
                     .then(function (response) {
                     if(response.data.length > 0){
                         $rootScope.list = response.data;
@@ -33,6 +33,17 @@ angular.module('app.services',[])
             clearDetails : function(){
                 $rootScope.thingDetails = null;
                 return $rootScope.thingDetails;
+            },
+
+            setUI : function(data){
+                $rootScope.ui = data;
+                alert($rootScope.ui);
+                return $rootScope.ui;
+            },
+
+            getUI : function(){
+                return $rootScope.ui;
             }
+
         };
     }]);

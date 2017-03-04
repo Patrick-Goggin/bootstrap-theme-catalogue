@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by patrickgoggin on 3/2/17.
  */
-
 @Repository
-public interface ThingRepository extends JpaRepository<Thing, Long> {
-
+public interface CssRepository extends JpaRepository<Css, Long> {
 }

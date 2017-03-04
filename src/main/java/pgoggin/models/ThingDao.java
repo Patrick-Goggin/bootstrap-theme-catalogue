@@ -4,7 +4,7 @@ package pgoggin.models;
 import java.util.List;
 
 /**
- * Created by patrickgoggin on 3/4/17.
+ * Created by patrickgoggin on 3/2/17.
  */
 
 public interface ThingDao {

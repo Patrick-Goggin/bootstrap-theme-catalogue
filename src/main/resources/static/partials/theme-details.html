@@ -1,0 +1,19 @@
+<div id="details-panel" class="panel panel-primary" ng-controller="DetailsController">
+    <div class="panel-heading">
+        <h1 class="panel-title">Theme Details</h1>
+    </div>
+    <div class="panel-body">
+        <h4 class="details-field">Name: <span ng-bind="thingDetails.name"></span></h4>
+        <!--<h4 class="details-field">ID: <span ng-bind="thingDetails.id"></span></h4>-->
+        <!--<h4 class="details-field">CDN: <span ng-bind="thingDetails.cdn"></span></h4>-->
+        <h4 class="details-field">CDN:</h4> {{thingDetails.cdn}}<br>
+        <h4 class="details-field">Description: <span ng-bind="thingDetails.description"></span></h4><br>
+        <a class="details-link" ng-click="editTheme(thingDetails)" data-toggle="modal" href="#edit-theme-modal">Edit details</a>
+        <a class="details-link" ng-click="deleteTheme(thingDetails)">Delete theme</a>
+        <a class="details-link" ng-click="hideDetails()">Hide details</a>
+        <button class="btn btn-primary" ng-click="changeUI(thingDetails)">Apply Theme</button>
+        <a class="details-link" ng-click="getStyleSheet(thingDetails)">Get Stylesheet</a>
+        <!--<button class="btn btn-primary" ng-click="changeUI(thingDetails)">Get Css</button>-->
+    </div>
+</div>
+</div>
