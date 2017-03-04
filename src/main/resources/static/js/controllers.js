@@ -1,50 +1,46 @@
 var Controllers = angular.module('Controllers', ['app.services']);
+
 Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$global', function ($scope, $http, $rootScope, $global) {
 
 
     $scope.showForm = true;
-$scope.ui = 'css/bootstrap.min.css';
+
+    $scope.ui = 'css/bootstrap.min.css';
 
     $scope.changePath = function() {
         $scope.ui = 'css/bootstrap.min.css';
-          };
+    };
 
-          $scope.styles = $global.getList();
+    $scope.styles = $global.getList();
 
-          $scope.changeUI = function(style){
-                            $scope.ui = style.cdn;
-                            angular.element('.btn').blur();
-                        }
+    $scope.changeUI = function(style){
+        $scope.ui = style.cdn;
+        angular.element('.btn').blur();
+    }
 
-              $scope.restoreDefault = function(){
-                  $scope.ui = "css/bootstrap.min.css";
-              }
+    $scope.restoreDefault = function(){
+        $scope.ui = "css/bootstrap.min.css";
+    }
 
     $scope.formTheme = {
         name: '',
         description: '',
         cdn: '',
         price: '',
-        originalUri: '',
-        localUri: '',
         provider: '',
         website: '',
     };
 
-$scope.create = function(formTheme){
-    var toPost = {
-        name: $scope.formTheme.name,
-        description: $scope.formTheme.description,
-        cdn: $scope.formTheme.cdn,
-        price: $scope.formTheme.price,
-        originalUri: $scope.formTheme.originalUri,
-        localUri: $scope.formTheme.localUri,
-        provider: $scope.formTheme.provider,
-        website: $scope.formTheme.website,
+    $scope.create = function(formTheme){
+        var toPost = {
+            name: $scope.formTheme.name,
+            description: $scope.formTheme.description,
+            cdn: $scope.formTheme.cdn,
+            price: $scope.formTheme.price,
+            provider: $scope.formTheme.provider,
+            website: $scope.formTheme.website,
         };
-//        var theme = $scope.formTheme;
-//        var parameter = JSON.stringify({theme
-//        });
+
         $http.post("/theme/create", toPost)
             .then(function(response){
             resetForm();
@@ -57,38 +53,34 @@ $scope.create = function(formTheme){
         $scope.formTheme = null;
     }
 
-
-
     function createStyleSheet(newTheme){
-    var css;
-    var name = newTheme.name;
-    var themeId = newTheme.id;
-    var uri = newTheme.cdn;
+        var css;
+        var name = newTheme.name;
+        var themeId = newTheme.id;
+        var uri = newTheme.cdn;
         $http.get(uri)
             .then(function (response) {
-         css = response.data.toString();
-         var parameter = JSON.stringify({type: "Css",
-               name: name,
-               themeId: themeId,
-               css: css});
-               $http.post("/style", parameter)
-                           .then(function(response){
-                           $scope.css = response.data.css;
-                           $scope.cssTest = response;
-                       });
-      });
+            css = response.data.toString();
+            var parameter = JSON.stringify({type: "Css",
+                                            name: name,
+                                            themeId: themeId,
+                                            css: css});
+            $http.post("/style", parameter)
+                .then(function(response){
+                $scope.css = response.data.css;
+                $scope.cssTest = response;
+            });
+        });
     }
-
-
 
     $scope.getStyleSheet = function(theme){
         $http.get('added/' + theme.id + '.css')
-                    .then(function (response) {
-                    if(response.data){
-                   $scope.styleSheet = response.data;
-                 }
-                 $scope.styleSheet = response.data;
-              });
+            .then(function (response) {
+            if(response.data){
+                $scope.styleSheet = response.data;
+            }
+            $scope.styleSheet = response.data;
+        });
     }
 
     // test to be sure theme has been created and list updated
@@ -105,43 +97,31 @@ $scope.create = function(formTheme){
     }
 
     function resetForm(){
-            angular.element('#add-theme-name').val('');
-            angular.element('#add-theme-description').val('');
-            angular.element('#add-theme-cdn').val('');
-            angular.element('#add-theme-originalUri').val('');
-            angular.element('#add-theme-provider').val('');
-            angular.element('#add-theme-website').val('');
-            angular.element('#add-theme-localUri').val('');
-            angular.element('#add-theme-price').val('');
+        angular.element('#add-theme-name').val('');
+        angular.element('#add-theme-description').val('');
+        angular.element('#add-theme-cdn').val('');
+        angular.element('#add-theme-provider').val('');
+        angular.element('#add-theme-website').val('');
+        angular.element('#add-theme-price').val('');
     }
 
-//$scope.themeToEdit = {
-//        name: '',
-//        description: '',
-//        cdn: '',
-//        price: '',
-//        originalUri: '',
-//        localUri: '',
-//        provider: '',
-//        website: '',
-//    };
     $scope.selectedIndex = -1;
+
     $scope.itemClicked = function ($index) {
-                console.log($index);
-                $scope.selectedIndex = $index;
-            }
+        console.log($index);
+        $scope.selectedIndex = $index;
+    }
+
     $scope.updateTheme = function(themeDetails){
-            var toPatch = {
-                    id: $scope.themeToEdit.id,
-                    name: $scope.themeToEdit.name,
-                    description: $scope.themeToEdit.description,
-                    cdn: $scope.themeToEdit.cdn,
-                    price: $scope.themeToEdit.price,
-                    originalUri: $scope.themeToEdit.originalUri,
-                    localUri: $scope.themeToEdit.localUri,
-                    provider: $scope.themeToEdit.provider,
-                    website: $scope.themeToEdit.website,
-                    };
+        var toPatch = {
+            id: $scope.themeToEdit.id,
+            name: $scope.themeToEdit.name,
+            description: $scope.themeToEdit.description,
+            cdn: $scope.themeToEdit.cdn,
+            price: $scope.themeToEdit.price,
+            provider: $scope.themeToEdit.provider,
+            website: $scope.themeToEdit.website,
+        };
         $http.patch("/theme/update", toPatch)
             .then(function(response){
             $scope.theme = null;
@@ -182,9 +162,9 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
 
     $scope.checkPrice = function(aTheme){
         if(aTheme.price == 0){
-        return "Free";
+            return "Free";
         }else
-        return aTheme.price;
+            return aTheme.price;
     }
 
     $scope.set_color = function (item) {
@@ -218,38 +198,39 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
     }
 
     $scope.button_color = function (item) {
-            var list = $scope.list;
-            for(i=0; i < list.length; i++){
-                var theme = list[i];
-                if(item.id == theme.id){
-                    if(4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 !== 0){
-                        return 'btn-info';
-                    }
-                    if(i == 0){
-                        return 'btn-info';
-                    }
-                    if(i%5 == 0){
-                        return 'btn-info';
-                    }
-                    if(i%4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 == 0){
-                        return 'btn-success';
-                    }
-                    if(i%4 !== 0 && i%2 == 0){
-                        return 'btn-danger';
-                    }
-                    if(i%3 == 0){
-                        return 'btn-warning';
-                    }
-                    if(i%4 == 0 ){
-                        return 'btn-active';
-                    }
+        var list = $scope.list;
+        for(i=0; i < list.length; i++){
+            var theme = list[i];
+            if(item.id == theme.id){
+                if(4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 !== 0){
+                    return 'btn-info';
+                }
+                if(i == 0){
+                    return 'btn-info';
+                }
+                if(i%5 == 0){
+                    return 'btn-info';
+                }
+                if(i%4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 == 0){
+                    return 'btn-success';
+                }
+                if(i%4 !== 0 && i%2 == 0){
+                    return 'btn-danger';
+                }
+                if(i%3 == 0){
+                    return 'btn-warning';
+                }
+                if(i%4 == 0 ){
+                    return 'btn-active';
                 }
             }
         }
+    }
 
 }]);
 
 Controllers.controller('DetailsController', ['$scope', '$http', '$rootScope','$global', function ($scope, $http, $rootScope, $global) {
+
     $scope.hideDetails = function(){
         $global.clearDetails();
     }
@@ -267,37 +248,7 @@ Controllers.controller('DetailsController', ['$scope', '$http', '$rootScope','$g
             $global.getList();
         });
     }
-}]);
 
-//Controllers.controller('UIController', ['$scope', '$http', '$rootScope','$global', function ($scope, $http, $rootScope, $global) {
-//    $scope.styles = [
-//            {
-//                name: 'Cerulean',
-//                uri: 'https://bootswatch.com/cerulean/bootstrap.min.css',
-//            },
-//            {
-//                name: 'Darkly',
-//                uri: 'https://bootswatch.com/darkly/bootstrap.min.css',
-//            },
-//            {
-//                name: 'Flatly',
-//                uri: 'https://bootswatch.com/flatly/bootstrap.min.css',
-//            }
-//        ];
-//    $scope.ui = 'css/bootstrap.min.css';
-//
-//    $scope.changeUI = function(style){
-//        $scope.ui = style.uri;
-//        alert($scope.ui)
-//        $scope.ui='https://bootswatch.com/cerulean/bootstrap.min.css';
-//        $scope.ui = $global.setUI(style.uri);
-//        $scope.$apply();
-//    }
-//    $scope.changePath = function() {
-//
-//        $scope.ui = 'css/darkly.min.css';
-//        alert($scope.ui);
-//      };
-//}]);
+}]);
 
 

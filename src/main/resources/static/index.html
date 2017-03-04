@@ -2,11 +2,11 @@
 <html ng-app="app" ng-controller='ThemeController'>
 <title>Title</title>
 <meta charset="utf-8">
+
 <script>document.write('<base href="' + document.location + '" />');</script>
+
 <link rel="stylesheet" href="css/styles.css">
-<!--<link rel="stylesheet" href="css/sb-admin-2.css">-->
-<!--<link ng-controller="UIController" rel="stylesheet" href="css/bootstrap.min.css">-->
-<!--<link rel="stylesheet" ng-href="https://bootswatch.com/{{ui}}/bootstrap.min.css">-->
+
 <link rel="stylesheet" ng-href="{{ui}}">
 
 <!-- jQuery CDN-->
@@ -14,15 +14,12 @@
 <!-- /jQuery CDN-->
 
 <!-- Angular CDN-->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-animate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular-route.min.js"></script>
 <!-- /Angular CDN-->
 
 <!-- Bootstrap CDN-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- /Bootstrap CDN-->
 
@@ -31,7 +28,6 @@
 <script src="js/controllers.js"></script>
 <script src="js/services.js"></script>
 <!-- /Angular App -->
-
 
 </head>
 <body>
@@ -45,12 +41,6 @@
         <div ng-controller="ThemeController" ng-include src="'partials/edit-theme-modal.html'"></div>
         <div ng-controller="ThemeController" ng-include src="'partials/add-theme-modal.html'"></div>
     </div>
-    <h1>{{css}}</h1>
-    <h1>{{cssTest}}</h1>
-    <h1>{{bbb}}</h1>
-</div>
-<div>
-    <!--<button ng-click="changePath()">change</button>-->
 </div>
 </body>
 </html>

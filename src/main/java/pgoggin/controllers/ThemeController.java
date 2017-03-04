@@ -40,6 +40,7 @@ public class ThemeController {
 
         return sheet;
     }
+
     @RequestMapping(value = "/style/{id}.css", method = RequestMethod.GET)
     @ResponseBody
     public String getOneStockFromPortfolio(@PathVariable("id") long id){
