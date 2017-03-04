@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="aTheme in list" ng-cloak class="table-row" ng-class="[{ 'selected-class-name': $index == selectedIndex}, set_color(aTheme)]">
+    <tr ng-repeat="aTheme in list | orderBy: 'name'" ng-cloak class="table-row" ng-class="[{ 'selected-class-name': $index == selectedIndex}, set_color(aTheme)]">
         <td>
             <div class="btn-group">
                 <a class="dropdown-toggle btn btn-xs" ng-class="button_color(aTheme)" data-toggle="dropdown" href="#" id="themes"><span class="caret"></span></a>
@@ -20,7 +20,7 @@
                     <li><a data-toggle="modal" href="#edit-modal" ng-click="editThing(aTheme)">Edit</a></li>
                     <li><a ng-click="deleteThing(thingDetails)">Delete</a></li>
                 </ul>
-                {{aTheme.id}}
+                <!--{{aTheme.id}}-->{{$index}}
             </div>
         </td>
         <td>
