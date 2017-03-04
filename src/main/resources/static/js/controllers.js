@@ -19,7 +19,7 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
     }
 
     $scope.restoreDefault = function(){
-        $scope.ui = "css/bootstrap.min.css";
+        $scope.ui = 'css/bootstrap.min.css';
     }
 
     $scope.formTheme = {
