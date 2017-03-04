@@ -7,7 +7,6 @@
         <th>Provider</th>
         <th>Website</th>
         <th>Price</th>
-        <!--<th>Provider</th>-->
     </tr>
     </thead>
     <tbody>
@@ -20,24 +19,17 @@
                     <li><a data-toggle="modal" href="#edit-modal" ng-click="editThing(aTheme)">Edit</a></li>
                     <li><a ng-click="deleteThing(thingDetails)">Delete</a></li>
                 </ul>
-                <!--{{aTheme.id}}-->{{$index}}
+                {{$index+1}}
             </div>
         </td>
         <td>
-            <!--<a id="{{stock.t}}" class="details-link" ng-click="getDetails(); itemClicked($index);" ng-class="{ 'selected-class-name': $index == selectedIndex }">-->
             <a id="{{aTheme.name + '_' + aTheme.id}}" class="details-link" ng-click="viewDetails(aTheme); itemClicked($index)">
                 {{aTheme.name}}
             </a>
         </td>
-        <!--<td>{{aTheme.description}}</td>-->
-        <!--<td>{{aTheme.cdn}}</td>-->
-        <!--<td>{{aTheme.originalUri}}</td>-->
         <td>{{aTheme.provider}}</td>
         <td>{{aTheme.website}}</td>
-        <!--<td>{{aTheme.localUri}}</td>-->
         <td><span ng-bind="checkPrice(aTheme)"></span></td>
-        <!--<td>{{aTheme.dateAdded}}</td>-->
-        <!--<td>{{aTheme.addedBy}}</td>-->
     </tr>
     <tr ng-cloak class="table-row active" >
         <td>
@@ -47,7 +39,6 @@
         <td></td>
         <td></td>
         <td></td>
-        <!--<td><a ng-click="deleteAll()">Delete List</a></td>-->
     </tr>
     </tbody>
 </table>
