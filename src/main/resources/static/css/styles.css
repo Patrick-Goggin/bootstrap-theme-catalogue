@@ -1,0 +1,69 @@
+body{
+background-color:#F5F5F5;
+}
+
+a{
+cursor:pointer;
+}
+
+
+li{
+list-style-type: none;
+}
+
+
+#thingForm{
+max-width: 400px;
+}
+
+.section-container{
+margin: 20px;
+float: left;
+max-width: 400px;
+}
+
+#thing-list{
+align: center;
+padding: 0;
+max-height: 80vh;
+overflow-y: auto;
+}
+
+#thing-list li{
+display: block;
+align: center;
+text-align: center;
+padding: 0;
+margin: 0;
+}
+
+.thing-in-list{
+align: center;
+text-align: left;
+padding: 0;
+position: relative;
+}
+
+#list-container{
+text-align: center;
+}
+
+#details-container{
+text-align: center;
+}
+
+.hide-section{
+float: right;
+}
+
+#delete-link{
+float:left;
+}
+
+#edit-link{
+float:left;
+}
+
+.details-field{
+text-align:left;
+}
