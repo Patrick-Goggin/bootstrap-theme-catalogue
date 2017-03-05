@@ -23,6 +23,7 @@ angular.module('app.services',[])
 
             setDetails : function(data){
                 $rootScope.thingDetails = data;
+                //$rootScope.thingDetails.c = (data.c);
                 return data;
             },
 
@@ -44,6 +45,5 @@ angular.module('app.services',[])
             getUI : function(){
                 return $rootScope.ui;
             }
-
         };
     }]);

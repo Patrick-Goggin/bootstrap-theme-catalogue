@@ -2,7 +2,6 @@ var Controllers = angular.module('Controllers', ['app.services']);
 
 Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$global', function ($scope, $http, $rootScope, $global) {
 
-
     $scope.showForm = true;
 
     $scope.ui = 'css/bootstrap.min.css';
@@ -40,7 +39,6 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
             provider: $scope.formTheme.provider,
             website: $scope.formTheme.website,
         };
-
         $http.post("/theme/create", toPost)
             .then(function(response){
             resetForm();
@@ -107,9 +105,10 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
 
     $scope.selectedIndex = -1;
 
-    $scope.itemClicked = function ($index) {
+    $scope.itemClicked = function ($index, aTheme) {
         console.log($index);
         $scope.selectedIndex = $index;
+        $global.setDetails(aTheme);
     }
 
     $scope.updateTheme = function(themeDetails){
@@ -128,7 +127,7 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
             if (response.data == null) {
                 $scope.theme = null;
             }
-            $global.setDetails(response.data);
+              $global.setDetails(response.data);
             var li = $global.getList();
             $global.setList(li);
         });
@@ -144,13 +143,6 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
         $scope.list = $global.getList();
     }
 
-    $scope.viewDetails = function(item){
-        var themeDetails = item;
-        $global.clearDetails();
-        $global.setDetails(themeDetails);
-        $rootScope.themeDetails = item;
-    }
-
     $scope.deleteAll = function(){
         $http.delete('/theme/delete/all')
             .then(function (response) {
@@ -161,41 +153,63 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
     }
 
     $scope.checkPrice = function(aTheme){
-        if(aTheme.price == 0){
+        if(aTheme.price == 0 || aTheme.price == null){
             return "Free";
         }else
             return aTheme.price;
     }
 
-    $scope.set_color = function (item) {
-        var list = $scope.list;
-        for(i=0; i < list.length; i++){
-            var theme = list[i];
-            if(item.id == theme.id){
-                if(4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 !== 0){
-                    return 'info';
-                }
-                if(i == 0){
-                    return 'info';
-                }
-                if(i%5 == 0){
-                    return 'info';
-                }
-                if(i%4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 == 0){
-                    return 'success';
-                }
-                if(i%4 !== 0 && i%2 == 0){
-                    return 'danger';
-                }
-                if(i%3 == 0){
-                    return 'warning';
-                }
-                if(i%4 == 0 ){
-                    return 'active';
+$scope.viewDetails = function(aTheme){
+        var themeDetails = aTheme;
+        $global.clearDetails();
+        $global.setDetails(themeDetails);
+        $rootScope.themeDetails = aTheme;
+    }
+
+    $scope.set_color = function (aTheme) {
+            var list = $scope.list;
+            var c = '';
+            for(i=0; i < list.length; i++){
+                var theme = list[i];
+                if(aTheme.id == theme.id){
+                    if(4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 !== 0){
+                        c = 'info';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i == 0){
+                        c = 'info';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i%5 == 0){
+                        c = 'info';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i%4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 == 0){
+                        c = 'success';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i%4 !== 0 && i%2 == 0){
+                        c = 'danger';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i%3 == 0){
+                        c = 'warning';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
+                    if(i%4 == 0 ){
+                        c = 'active';
+                        $scope.list[i].c = c;
+                        return c;
+                    }
                 }
             }
         }
-    }
 
     $scope.button_color = function (item) {
         var list = $scope.list;

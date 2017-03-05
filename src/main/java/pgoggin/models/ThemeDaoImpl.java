@@ -61,6 +61,5 @@ public class ThemeDaoImpl implements ThemeDao {
 
     public void deleteAll(){
         repo.deleteAllInBatch();
-        // int deletedCount = entityManager.createQuery("DELETE FROM Country").executeUpdate();
     }
 }

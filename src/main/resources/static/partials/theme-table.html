@@ -23,8 +23,8 @@
             </div>
         </td>
         <td>
-            <a id="{{aTheme.name + '_' + aTheme.id}}" class="details-link" ng-click="viewDetails(aTheme); itemClicked($index)">
-                {{aTheme.name}}
+            <a id="{{aTheme.name + '_' + aTheme.id}}" class="details-link" ng-click="itemClicked($index, aTheme); viewDetails(aTheme);">
+                {{aTheme.name}}{{aTheme.c}}
             </a>
         </td>
         <td>{{aTheme.provider}}</td>

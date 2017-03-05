@@ -24,10 +24,12 @@ public class WriterImpl implements Writer{
 
         return "";
     }
+
     @Override
     public void writeFile(Css css, String file){
         write(css, file);
     }
+
     @Override
     public void write(Css css, String file){
         String styleSheet = css.getCss();
