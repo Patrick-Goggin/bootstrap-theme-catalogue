@@ -5,8 +5,8 @@
         <th>#</th>
         <th id="table-head-name">Name</th>
         <th>Provider</th>
-        <th>Website</th>
-        <th>Price</th>
+        <!--<th>Website</th>-->
+        <!--<th>Price</th>-->
     </tr>
     </thead>
     <tbody>
@@ -24,12 +24,12 @@
         </td>
         <td>
             <a id="{{aTheme.name + '_' + aTheme.id}}" class="details-link" ng-click="itemClicked($index, aTheme); viewDetails(aTheme);">
-                {{aTheme.name}}{{aTheme.c}}
+                {{aTheme.name}}
             </a>
         </td>
         <td>{{aTheme.provider}}</td>
-        <td>{{aTheme.website}}</td>
-        <td><span ng-bind="checkPrice(aTheme)"></span></td>
+        <!--<td>{{aTheme.website}}</td>-->
+        <!--<td><span ng-bind="checkPrice(aTheme)"></span></td>-->
     </tr>
     <tr ng-cloak class="table-row active" >
         <td>
@@ -37,8 +37,8 @@
         </td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
+        <!--<td></td>-->
+        <!--<td></td>-->
     </tr>
     </tbody>
 </table>

@@ -77,11 +77,12 @@ border-bottom:1px solid #2C3E50;
 .details-link{
 display:inline;
 text-align:center;
-alighn:center;
+align:center;
 margin:5px;
 }
 
 #details-container{
+text-align:center;
 float:right;
 max-width:700px;
 }
@@ -95,7 +96,7 @@ float:left;
 }
 
 #table-head-name{
-text-align:right;
+text-align:left;
 }
 
 .selected-class-name{
@@ -104,8 +105,8 @@ text-align:right;
 }
 
 .inline-heading{
-display:inline-block;
-line-height:1em;
+display:inline;
+float:left;
 text-align:left !important;
 align:left !important;
 }

@@ -152,13 +152,6 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
         });
     }
 
-    $scope.checkPrice = function(aTheme){
-        if(aTheme.price == 0 || aTheme.price == null){
-            return "Free";
-        }else
-            return aTheme.price;
-    }
-
 $scope.viewDetails = function(aTheme){
         var themeDetails = aTheme;
         $global.clearDetails();
@@ -248,6 +241,13 @@ Controllers.controller('DetailsController', ['$scope', '$http', '$rootScope','$g
     $scope.hideDetails = function(){
         $global.clearDetails();
     }
+    
+    $scope.checkPrice = function(aTheme){
+            if(aTheme.price == 0 || aTheme.price == null){
+                return "Free";
+            }else
+                return aTheme.price;
+        }
 
     $scope.editTheme = function(themeDetails){
         $rootScope.themeToEdit = themeDetails;
