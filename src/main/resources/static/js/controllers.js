@@ -241,7 +241,7 @@ Controllers.controller('DetailsController', ['$scope', '$http', '$rootScope','$g
     $scope.hideDetails = function(){
         $global.clearDetails();
     }
-    
+
     $scope.checkPrice = function(aTheme){
             if(aTheme.price == 0 || aTheme.price == null){
                 return "Free";

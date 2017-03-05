@@ -1,18 +1,17 @@
 ### Usage
-
+- This application allows users to catalogue and store bootstrap themes, and preview any theme in the catalogue in a single-page application.
 - Run the application and go on http://localhost:8080/
 
 ### Build and run
 
 #### Configurations
-The template uses an H2 database for development and automatically configures a connection to a PostgreSQL database when deployed on Heroku.
-
+The application is configured to use an h2 database when deployed locally and a PostgreSQL database when deployed on heroku.
 #### Prerequisites
 
 - Java 8
 - Maven 3
 - PostgreSQL
-- Lombok IDE plugin (I used IntelliJ)
+- Lombok (may require IDE plugin)
 
 #### From terminal
 
