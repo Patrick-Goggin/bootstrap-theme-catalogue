@@ -73,7 +73,8 @@ angular.module('app.services',[])
                         currentId: data.id,
                         cdn: data.cdn,
                         localUri:data.localUri,
-                        description: data.description
+                        description: data.description,
+                        color: data.c
                     };
             $http.patch("/current", toPatch)
                         .then(function(response){

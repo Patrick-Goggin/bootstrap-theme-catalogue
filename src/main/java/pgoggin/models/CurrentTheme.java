@@ -32,4 +32,7 @@ public class CurrentTheme {
 
     @Column
     String cdn;
+
+    @Column
+    String color;
 }

@@ -1,4 +1,4 @@
-<div id="details-panel" ng-controller="DetailsController" class="panel panel-primary">
+    <div id="details-panel" ng-controller="DetailsController" class="panel" ng-class="'panel-'+currentTheme.color">
     <div class="panel-heading">
         <h1 class="panel-title">Current Theme</h1>
     </div>
@@ -6,6 +6,6 @@
  <div class="panel-body">
         <h4 class="details-field">Description: <span ng-bind="currentTheme.description"></span></h4>
         </br><br>
+     <a class="btn btn-danger" href="#buttons">View components</a>
     </div>
-    <a class="btn btn-warning" href="#buttons">View components</a>
 </div>
