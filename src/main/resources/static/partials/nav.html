@@ -17,7 +17,8 @@
                     <ul class="dropdown-menu" aria-labelledby="themes">
                         <li><a ng-click="restoreDefault()">Default</a></li>
                         <li class="divider"></li>
-                        <li ng-repeat="style in list"><a ng-click="changeUI(style)">{{style.name}}</a></li>
+                        <!--<li ng-repeat="style in list"><a ng-click="changeUI(style);">{{style.name}}</a></li>-->
+                        <li ng-repeat="style in list"><a ng-click="apply(style);">{{style.name}}</a></li>
                     </ul>
                 </li>
             </ul>

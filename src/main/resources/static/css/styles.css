@@ -93,10 +93,15 @@ width:100%;
 
 #table-container{
 float:left;
+/*width:80vw;*/
 }
 
 #table-head-name{
 text-align:left;
+}
+
+#table{
+width:100%;
 }
 
 .selected-class-name{
@@ -109,4 +114,34 @@ display:inline;
 float:left;
 text-align:left !important;
 align:left !important;
+}
+
+.one-hundred{
+width:100%!important;
+}
+.ninety{
+width:90%!important;
+}
+.eighty{
+width:80%!important;
+}
+.seventy{
+width:70%!important;
+}
+.sixty{
+width:60%!important;
+}
+.fifty{
+width:50%!important;
+}
+
+.line-height{
+line-height:50%!important;
+margin-bottom:0px;
+margin-top:0px;
+}
+
+.line-height-h1{
+line-height:50%!important;
+margin-bottom:0px;
 }

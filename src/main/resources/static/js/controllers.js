@@ -2,9 +2,12 @@ var Controllers = angular.module('Controllers', ['app.services']);
 
 Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$global', function ($scope, $http, $rootScope, $global) {
 
+
+
     $scope.showForm = true;
 
-    $scope.ui = 'css/bootstrap.min.css';
+   $global.getCurrentTheme();
+
 
     $scope.changePath = function() {
         $scope.ui = 'css/bootstrap.min.css';
@@ -17,6 +20,12 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
         angular.element('.btn').blur();
     }
 
+    $scope.apply = function(style){
+            $scope.ui = style.cdn;
+            angular.element('.btn').blur();
+            $global.updateCurrentTheme(style);
+        }
+
     $scope.restoreDefault = function(){
         $scope.ui = 'css/bootstrap.min.css';
     }
@@ -24,20 +33,14 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
     $scope.formTheme = {
         name: '',
         description: '',
-        cdn: '',
-        price: '',
-        provider: '',
-        website: '',
+        cdn: ''
     };
 
     $scope.create = function(formTheme){
         var toPost = {
             name: $scope.formTheme.name,
             description: $scope.formTheme.description,
-            cdn: $scope.formTheme.cdn,
-            price: $scope.formTheme.price,
-            provider: $scope.formTheme.provider,
-            website: $scope.formTheme.website,
+            cdn: $scope.formTheme.cdn
         };
         $http.post("/theme/create", toPost)
             .then(function(response){
@@ -109,6 +112,7 @@ Controllers.controller('ThemeController', ['$scope', '$http', '$rootScope','$glo
         console.log($index);
         $scope.selectedIndex = $index;
         $global.setDetails(aTheme);
+        $global.setUI(aTheme.cdn);
     }
 
     $scope.updateTheme = function(themeDetails){
@@ -142,6 +146,18 @@ Controllers.controller('ListController', ['$scope', '$http', '$rootScope','$glob
     $scope.updateList =  function(){
         $scope.list = $global.getList();
     }
+    $scope.apply = function(style){
+            $global.setUI(style.cdn);
+            $scope.ui = style.cdn;
+            angular.element('.btn').blur();
+            $global.updateCurrentTheme(style);
+            $global.getUI();
+        }
+
+$scope.changeUI = function(style){
+        $scope.ui = style.cdn;
+        angular.element('.btn').blur();
+    }
 
     $scope.deleteAll = function(){
         $http.delete('/theme/delete/all')
@@ -159,6 +175,8 @@ $scope.viewDetails = function(aTheme){
         $rootScope.themeDetails = aTheme;
     }
 
+
+
     $scope.set_color = function (aTheme) {
             var list = $scope.list;
             var c = '';
@@ -168,6 +186,7 @@ $scope.viewDetails = function(aTheme){
                     if(4 !== 0 && i%3 !== 0 && i%2 !== 0 && i%1 !== 0){
                         c = 'info';
                         $scope.list[i].c = c;
+                        $scope.aTheme.c = c;
                         return c;
                     }
                     if(i == 0){
@@ -200,6 +219,7 @@ $scope.viewDetails = function(aTheme){
                         $scope.list[i].c = c;
                         return c;
                     }
+
                 }
             }
         }
@@ -241,13 +261,20 @@ Controllers.controller('DetailsController', ['$scope', '$http', '$rootScope','$g
     $scope.hideDetails = function(){
         $global.clearDetails();
     }
+$scope.aTheme = {
+        name: '',
+        description: '',
+        cdn: '',
+        localUri: ''
+    };
 
-    $scope.checkPrice = function(aTheme){
-            if(aTheme.price == 0 || aTheme.price == null){
-                return "Free";
-            }else
-                return aTheme.price;
-        }
+//    $scope.checkPrice = function(aTheme){
+//    if(!aTheme){aTheme;}
+//            if(aTheme.price == 0 || aTheme.price == null){
+//                return "Free";
+//            }else
+//                return aTheme.price;
+//        }
 
     $scope.editTheme = function(themeDetails){
         $rootScope.themeToEdit = themeDetails;

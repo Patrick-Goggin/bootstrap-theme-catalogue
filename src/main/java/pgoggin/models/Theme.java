@@ -29,26 +29,20 @@ public class Theme {
     String cdn;
 
     @Column
-    String originalUri;
-
-    @Column
-    String provider;
-
-    @Column
-    String website;
-
-    @Column
     String localUri;
 
     @Column
-    String price;
-
-    @Column
-    Date dateAdded;
-
-    @Column
-    String addedBy;
-
-    @Column
     String css;
+    public Theme (){
+        this.name = name;
+        this.description = description;
+        this.cdn = cdn;
+        this.localUri = localUri;
+    }
+    public Theme(String name, String description, String cdn){
+        this.name = name;
+        this.description = description;
+        this.cdn = cdn;
+        this.localUri = localUri;
+    }
 }

@@ -23,7 +23,6 @@ angular.module('app.services',[])
 
             setDetails : function(data){
                 $rootScope.thingDetails = data;
-                //$rootScope.thingDetails.c = (data.c);
                 return data;
             },
 
@@ -38,12 +37,51 @@ angular.module('app.services',[])
 
             setUI : function(data){
                 $rootScope.ui = data;
-                alert($rootScope.ui);
                 return $rootScope.ui;
             },
 
             getUI : function(){
                 return $rootScope.ui;
+            },
+
+            setCurrentTheme : function(data){
+                return $rootScope.currentTheme;
+            },
+
+            getCurrentTheme : function(){
+                $http.get('/current')
+                .then(function (response) {
+                console.log(response.data);
+                $rootScope.currentTheme = response.data;
+                    if(response.data.cdn){
+                        $rootScope.ui = response.data.cdn;
+                        }else{$rootScope.ui = 'css/bootstrap.min.css';}
+                    if(response.data.name){
+                        $rootScope.currentTheme = response.data;
+                        $rootScope.ui = response.data.cdn;
+                    }
+                });
+                return $rootScope.currentTheme;
+            },
+
+            updateCurrentTheme : function(data){
+            //$rootScope.ui = data.cdn;
+            //$rootScope.currentTheme = data;
+            var toPatch = {
+                        id: $rootScope.currentTheme.id,
+                        name: data.name,
+                        currentId: data.id,
+                        cdn: data.cdn,
+                        localUri:data.localUri,
+                        description: data.description
+                    };
+            $http.patch("/current", toPatch)
+                        .then(function(response){
+                        console.log(response.data)
+                        $rootScope.currentTheme = response.data;
+                        $rootScope.ui = response.data.cdn;
+                    });
+                return $rootScope.currentTheme;
             }
         };
     }]);
