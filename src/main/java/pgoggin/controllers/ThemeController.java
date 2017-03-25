@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javafx.scene.input.KeyCode.V;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 /**
  * Created by patrickgoggin on 3/2/17.
